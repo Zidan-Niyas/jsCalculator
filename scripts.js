@@ -16,6 +16,7 @@ let op = '';
 let ans = '';
 let numOfOperators = 0;
 let displayedValue = '';
+const acceptedValue = "1234567890.";
 
 operators.forEach(operator => {
     operator.addEventListener("click", (e) => {
@@ -160,18 +161,20 @@ del.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (e) => {
-    if(e.key == ".") {
-        decimalClicked = true;
-    }
-    if(!operatorClicked){
-        firstNumber += e.key;
-        display.value = firstNumber;
-        firstVar = true;
-    }
-    else {
-        secondNumber +=  e.key;
-        display.value += e.key;
-        secondVar = true;
-        displayedValue = display.value;
+    if(acceptedValue.includes(e.key)) {
+        if(e.key == ".") {
+            decimalClicked = true;
+            }
+            if(!operatorClicked){
+                firstNumber += e.key;
+                display.value = firstNumber;
+                firstVar = true;
+            }
+            else {
+                secondNumber +=  e.key;
+                display.value += e.key;
+                secondVar = true;
+                displayedValue = display.value;
+            }                
     }
 });
