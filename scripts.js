@@ -14,6 +14,7 @@ let op = '';
 let ans = '';
 let numOfOperators = 0;
 let currentNum = '';
+let displayedValue = '';
 
 operators.forEach(operator => {
     operator.addEventListener("click", (e) => {
@@ -36,16 +37,15 @@ operators.forEach(operator => {
 numbers.forEach(button => {
     button.addEventListener("click", (e) => {
         if(!operatorClicked){
-            currentNum = e.target.value;
             firstNumber += e.target.value;
             display.value = firstNumber;
             firstVar = true;
         }
         else {
-            currentNum = e.target.value;
             secondNumber +=  e.target.value;
             display.value += e.target.value;
             secondVar = true;
+            displayedValue = display.value;
         }
     });
 });
@@ -56,8 +56,6 @@ clear.addEventListener("click", () => {
     secondNumber = '';
     numOfOperators = 0;
     operatorClicked = false;
-    console.clear();
-    console.log(`RESET! \n FirstNumber : ${firstNumber}, SecondNumber : ${secondNumber}, NumOfOperators : ${numOfOperators}, OperatorClicked : ${operatorClicked}`);
 });
 
 
@@ -100,7 +98,6 @@ const operate = (a, b, operator) => {
 
 equals.addEventListener("click", () => {
     ans = operate(parseInt(firstNumber), parseInt(secondNumber), op);
-    console.log(`First Number : ${firstNumber}\nSecond Number : ${secondNumber}\nOperator : ${op}\nAnswer : ${ans}`);
     display.value = ans;
     operatorClicked = false;
     firstNumber = ans;
@@ -117,17 +114,20 @@ del.addEventListener("click", () => {
     if(!secondVar && !operatorClicked) {
         let first = firstNumber.toString();
         firstNumber = first.slice(0, -1);
-        console.log(firstNumber)
         display.value = firstNumber;
     }
-    else if(operatorClicked) {
+    else if(!secondVar && operatorClicked) {
         display.value = display.value.slice(0,-3);
         op = '';
         operatorClicked = false;
     }
-    else {
+    else if(secondNumber != '') {
         let second = secondNumber.toString();
         secondNumber = second.slice(0,-1);
-        display.value = `${firstNumber} ${op} ${secondNumber}`;
+        display.value = displayedValue.slice(0,-1);
+        displayedValue = display.value;
+        if(secondNumber == '' ) {
+            secondVar = false;
+        }
     }
 });
