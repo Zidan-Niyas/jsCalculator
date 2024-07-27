@@ -117,7 +117,7 @@ del.addEventListener("click", () => {
     if(!secondVar && !operatorClicked) {
         let first = firstNumber.toString();
         firstNumber = first.slice(0, -1);
-        console.log(firstNumber);
+        console.log(firstNumber)
         display.value = firstNumber;
     }
     else if(operatorClicked) {
