@@ -9,6 +9,7 @@ const decimal = document.querySelector("#decimal");
 let operatorClicked = false;
 let firstVar = false;
 let secondVar = false;
+let decimalClicked = false;
 let firstNumber = '';
 let secondNumber = '';
 let op = '';
@@ -36,6 +37,9 @@ operators.forEach(operator => {
 
 numbers.forEach(button => {
     button.addEventListener("click", (e) => {
+        if(e.target.value == ".") {
+            decimalClicked = true;
+        }
         if(!operatorClicked){
             firstNumber += e.target.value;
             display.value = firstNumber;
@@ -56,14 +60,12 @@ clear.addEventListener("click", () => {
     secondNumber = '';
     numOfOperators = 0;
     operatorClicked = false;
+    decimalClicked = false;
 });
 
 
 const add = (a, b) => {
-    let num = a + b;
-    let ans = Math.round(num * 10) / 10;
-    console.log(ans);
-    return ans;
+    return a + b;
 };
 
 const subtract = (a,b) => {
@@ -87,22 +89,44 @@ const divide = (a, b) => {
 const operate = (a, b, operator) => {
     switch(operator) {
         case '+': 
-            return add(a,b).toFixed(1);
+            if(decimalClicked) {
+                return add(a,b).toFixed(1);
+            }
+            else {
+                return add(a,b);
+            }
+            
         case '-' :
-            return subtract(a,b).toFixed(1);
+            if(decimalClicked) {
+                return subtract(a,b).toFixed(1);
+            }
+            else {
+                return subtract(a,b);
+            }
         case '*' :
-            return multiply(a,b).toFixed(1);
+            if(decimalClicked) {
+                return multiply(a,b).toFixed(1);
+            }
+            else {
+                return multiply(a,b);
+            }
         case '/' :
-            return divide(a,b).toFixed(1);
+            if(decimalClicked) {
+                return divide(a,b).toFixed(1);
+            }
+            else {
+                return divide(a,b);
+            }
         default :
             console.log("Invalid Operator");
     }
 }
 
 equals.addEventListener("click", () => {
-    ans = operate(parseFloat(firstNumber), parseFloat(secondNumber), op);
+    ans = operate(parseFloat(firstNumber), parseFloat(secondNumber), op);    
     display.value = ans;
     operatorClicked = false;
+    decimalClicked = false;
     firstNumber = ans;
     secondNumber = '';
 });
@@ -135,3 +159,19 @@ del.addEventListener("click", () => {
     }
 });
 
+document.addEventListener("keydown", (e) => {
+    if(e.key == ".") {
+        decimalClicked = true;
+    }
+    if(!operatorClicked){
+        firstNumber += e.key;
+        display.value = firstNumber;
+        firstVar = true;
+    }
+    else {
+        secondNumber +=  e.key;
+        display.value += e.key;
+        secondVar = true;
+        displayedValue = display.value;
+    }
+});
