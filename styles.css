@@ -5,7 +5,6 @@
 }
 
 h1 {
-    padding-top: 20px;
     text-align: center;
     margin-bottom: 30px;
     color: rgb(78, 71, 71);
@@ -20,7 +19,7 @@ h1 {
 }
 
 #container {
-    width: 25%;
+    width: 23%;
     min-width: 400px;
     height: 58vh;
     border: 2px solid black;
@@ -34,7 +33,6 @@ h1 {
 #content {
     height: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     background-color: aquamarine;
 }
@@ -45,9 +43,12 @@ h1 {
 
 #display {
     width: 100%;
-    height: 50px;
+    height: 60px;
     margin-bottom: 10px;
     border-radius: 5px;
+    border: 2px solid gray;
+    padding-left: 10px;
+    font-size: 30px;
 }
 
 button {
@@ -56,14 +57,14 @@ button {
     margin: 5px;
     border: 2px solid rgb(112, 106, 106);
     border-radius: 5px;
-    font-size: larger;
+    font-size: 25px;
     flex-grow: 1;
     background-color: rgb(255, 255, 136);
 }
 
 button:hover {
     cursor: pointer;
-    background-color: yellow;
+    background-color: rgb(253, 253, 61);
 }
 
 #operator {
@@ -83,6 +84,7 @@ button:hover {
     background-color: #ff95bc;
 }
 
-#zero {
+.zero {
     flex-grow: 7;
 }
+

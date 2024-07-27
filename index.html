@@ -11,28 +11,32 @@
         <h1>Calculator</h1>
         <div id="container">
             <div id="displayField">
-                <input type="text" id="display" readonly>
+                <input type="text" id="display">
             </div>
             <div id="content">
-                <button id="special">AC</button>
+                <button id="special" class="clear">AC</button>
                 <button id="special">+/-</button>
                 <button id="special">%</button>
-                <button id="operator">/</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button id="operator">*</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button id="operator">-</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button id="operator">+</button>
-                <button id="zero">0</button>
-                <button>.</button>
-                <button id="operator">=</button>
+                <button id="operator" value="/">/</button>
+
+                <button value="7" id="number">7</button>
+                <button value="8" id="number">8</button>
+                <button value="9" id="number">9</button>
+                <button id="operator" value="*">*</button>
+
+                <button value="4" id="number">4</button>
+                <button value="5" id="number">5</button>
+                <button value="6" id="number">6</button>
+                <button id="operator" value="-">-</button>
+
+                <button value="1" id="number">1</button>
+                <button value="2" id="number">2</button>
+                <button value="3" id="number">3</button>
+                <button id="operator" value="+">+</button>
+
+                <button class="zero" value="0" id="number">0</button>
+                <button value=".">.</button>
+                <button class="equals" id="operator">=</button>
             </div>
         </div>
     </div>
