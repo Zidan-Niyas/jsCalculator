@@ -4,6 +4,7 @@ const operators = document.querySelectorAll("#operator");
 const clear = document.querySelector(".clear")
 const equals = document.querySelector(".equals");
 const del = document.querySelector(".delete");
+const decimal = document.querySelector("#decimal");
 
 let operatorClicked = false;
 let firstVar = false;
@@ -13,7 +14,6 @@ let secondNumber = '';
 let op = '';
 let ans = '';
 let numOfOperators = 0;
-let currentNum = '';
 let displayedValue = '';
 
 operators.forEach(operator => {
@@ -60,7 +60,10 @@ clear.addEventListener("click", () => {
 
 
 const add = (a, b) => {
-    return a + b;
+    let num = a + b;
+    let ans = Math.round(num * 10) / 10;
+    console.log(ans);
+    return ans;
 };
 
 const subtract = (a,b) => {
@@ -84,20 +87,20 @@ const divide = (a, b) => {
 const operate = (a, b, operator) => {
     switch(operator) {
         case '+': 
-            return add(a,b);
+            return add(a,b).toFixed(1);
         case '-' :
-            return subtract(a,b);
+            return subtract(a,b).toFixed(1);
         case '*' :
-            return multiply(a,b);
+            return multiply(a,b).toFixed(1);
         case '/' :
-            return divide(a,b);
+            return divide(a,b).toFixed(1);
         default :
             console.log("Invalid Operator");
     }
 }
 
 equals.addEventListener("click", () => {
-    ans = operate(parseInt(firstNumber), parseInt(secondNumber), op);
+    ans = operate(parseFloat(firstNumber), parseFloat(secondNumber), op);
     display.value = ans;
     operatorClicked = false;
     firstNumber = ans;
@@ -131,3 +134,4 @@ del.addEventListener("click", () => {
         }
     }
 });
+
