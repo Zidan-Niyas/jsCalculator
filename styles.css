@@ -21,6 +21,7 @@ h1 {
 #container {
     width: 23%;
     min-width: 400px;
+    min-height: 520px;
     height: 58vh;
     border: 2px solid black;
     border-radius: 5px;
@@ -28,6 +29,7 @@ h1 {
     flex-direction: column;
     padding: 16px;
     background-color: aquamarine;
+    overflow: auto;
 }
 
 #content {
@@ -47,8 +49,9 @@ h1 {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 2px solid gray;
-    padding-left: 10px;
+    padding-right: 15px;
     font-size: 30px;
+    text-align: end;
 }
 
 button {
@@ -67,12 +70,12 @@ button:hover {
     background-color: rgb(253, 253, 61);
 }
 
-#operator {
+#operator,.equals {
     background-color: rgb(255, 198, 123);
     font-size: 25px;
 }
 
-#operator:hover {
+#operator:hover, .equals:hover {
     background-color: rgb(255, 166, 0);
 }
 
@@ -87,4 +90,5 @@ button:hover {
 .zero {
     flex-grow: 7;
 }
+
 
