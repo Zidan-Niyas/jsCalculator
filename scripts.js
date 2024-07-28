@@ -18,6 +18,7 @@ let numOfOperators = 0;
 let displayedValue = '';
 const acceptedValue = "1234567890.";
 
+
 operators.forEach(operator => {
     operator.addEventListener("click", (e) => {
         numOfOperators++;
